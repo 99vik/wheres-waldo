@@ -4,9 +4,11 @@ import ApplicationRoutes from './components/ApplicationRoutes';
 
 export default function App() {
   return (
-    <Router>
-      <Navbar />
-      <ApplicationRoutes />
-    </Router>
+    <div className="min-h-screen">
+      <Router>
+        <Navbar />
+        <ApplicationRoutes />
+      </Router>
+    </div>
   );
 }
