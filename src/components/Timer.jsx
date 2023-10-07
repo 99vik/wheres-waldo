@@ -15,10 +15,12 @@ function Timer() {
 
   return (
     <>
-      <h1>
-        {minutes < 10 ? `0${minutes}` : minutes} :{' '}
-        {seconds < 10 ? `0${seconds}` : seconds}
-      </h1>
+      <div className="flex items-center justify-center mt-1">
+        <p className="text-4xl text-red-700 font-semibold font-digital">
+          {minutes < 10 ? `0${minutes}` : minutes} :{' '}
+          {seconds < 10 ? `0${seconds}` : seconds}
+        </p>
+      </div>
     </>
   );
 }
