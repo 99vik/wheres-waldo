@@ -1,6 +1,6 @@
 import BeachImg from '../assets/images/beach.jpg';
-import SkiSlopesImg from '../assets/images/ski-slopes.jpg';
-import OlympicStadiumImg from '../assets/images/olympic-stadium.jpg';
+import SkiSlopesImg from '../assets/images/ski_slopes.jpg';
+import OlympicStadiumImg from '../assets/images/olympic_stadium.jpg';
 import ChoosePictureCard from './ChoosePictureCard';
 import WaldoImg from '../assets/images/waldo-tilted.png';
 
