@@ -7,7 +7,7 @@ import WoofPic from '../assets/images/woof.png';
 function Characters() {
   return (
     <div className="flex justify-center">
-      <div className="flex items-center justify-center gap-7 bg-white/50 w-fit rounded-[30%]">
+      <div className="flex items-center justify-center gap-7 bg-white/60 w-fit rounded-3xl">
         <div className="relative">
           <div className="bg-green-300 w-full h-full absolute opacity-60 rounded-[50%] hidden"></div>
           <img
