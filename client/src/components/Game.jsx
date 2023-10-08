@@ -2,37 +2,47 @@ import { useParams } from 'react-router-dom';
 import GetPicture from '../scripts/ConditionalPictureExport';
 import Timer from './Timer';
 import Characters from './Characters';
+import { useState } from 'react';
+import TargetingBox from './TargetingBox';
 
 function Game() {
   const { title } = useParams();
   const Picture = GetPicture(title);
+  const [targetingBox, setTargetingBox] = useState(null);
+  const [boxCoordinates, setBoxCoordinates] = useState(null);
+  const [pictureDimensions, setPictureDimensions] = useState(null);
 
   function pictureClick(e) {
-    console.log(
-      Number((e.pageX / e.target.offsetWidth).toFixed(2)) * 100,
-      '% width'
-    );
-    console.log(
-      Number(
-        ((e.pageY - e.target.offsetTop) / e.target.offsetHeight).toFixed(2) *
-          100
-      ),
-      '% height'
-    );
+    const X = e.pageX / e.target.offsetWidth;
+    const Y = (e.pageY - e.target.parentNode.offsetTop) / e.target.offsetHeight;
+    setTargetingBox(true);
+    setPictureDimensions({
+      height: e.target.offsetHeight,
+      width: e.target.offsetWidth,
+    });
+    setBoxCoordinates({ x: X, y: Y });
   }
 
   return (
     <>
       <Timer />
-      <div className="p-1 sticky top-0">
+      <div className="p-1 sticky top-0 z-10">
         <Characters />
       </div>
-      <img
-        src={Picture}
-        alt="picture"
-        className="w-screen border-t border-red-700/30"
-        onClick={pictureClick}
-      />
+      <div className="relative z-0">
+        {targetingBox && (
+          <TargetingBox
+            coordinates={boxCoordinates}
+            dimensions={pictureDimensions}
+          />
+        )}
+        <img
+          src={Picture}
+          alt="picture"
+          className="w-screen border-t border-red-700/30"
+          onClick={pictureClick}
+        />
+      </div>
     </>
   );
 }
