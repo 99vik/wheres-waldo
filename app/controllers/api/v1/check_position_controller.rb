@@ -93,6 +93,38 @@ class Api::V1::CheckPositionController < ApplicationController
         min_y: 70,
         max_y: 73
       }
+    },
+    "olympic_stadium" => {
+      "odlaw" => {
+        min_x: 59,
+        max_x: 61,
+        min_y: 63,
+        max_y: 66
+      },
+      "wizzard" => {
+        min_x: 60,
+        max_x: 62,
+        min_y: 84,
+        max_y: 89
+      },
+      "wenda" => {
+        min_x: 24,
+        max_x: 26,
+        min_y: 70,
+        max_y: 74
+      },
+      "waldo" => {
+        min_x: 27,
+        max_x: 29,
+        min_y: 31,
+        max_y: 36
+      },
+      "woof" => {
+        min_x: 60,
+        max_x: 62,
+        min_y: 41,
+        max_y: 45
+      }
     }
   }
 end
