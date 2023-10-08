@@ -33,7 +33,7 @@ function Game() {
       <div className="p-1 sticky top-0 z-10">
         <Characters />
       </div>
-      <div className="relative z-0">
+      <div className="relative z-0 overflow-hidden">
         {targetingBox && (
           <TargetingBox
             coordinates={boxCoordinates}
