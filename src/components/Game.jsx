@@ -36,6 +36,7 @@ function Game() {
       <div className="relative z-0 overflow-hidden">
         {targetingBox && (
           <TargetingBox
+            title={title}
             coordinates={boxCoordinates}
             dimensions={pictureDimensions}
             closeTargetingBox={closeTargetingBox}

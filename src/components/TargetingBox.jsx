@@ -7,16 +7,17 @@ import WoofPic from '../assets/images/woof.png';
 import CloseIcon from '../assets/icons/close.svg';
 import checkClickPosition from '../scripts/checkClickPosition';
 
-function TargetingBox({ coordinates, dimensions, closeTargetingBox }) {
+function TargetingBox({ title, coordinates, dimensions, closeTargetingBox }) {
   const x = coordinates.x * dimensions.width - 25;
   const y = coordinates.y * dimensions.height - 25;
   const charactersPopupOffset = getCharactersPopupOffset(
     coordinates.x,
     coordinates.y
   );
+  console.log(coordinates);
 
   async function handleClick(character) {
-    const data = await checkClickPosition(character, coordinates);
+    const data = await checkClickPosition(title, character, coordinates);
     console.log(data);
   }
 
@@ -143,6 +144,7 @@ function getCharactersPopupOffset(width, height) {
 }
 
 TargetingBox.propTypes = {
+  title: PropTypes.string,
   coordinates: PropTypes.object,
   dimensions: PropTypes.object,
   closeTargetingBox: PropTypes.func,
