@@ -5,6 +5,7 @@ import OdlawPic from '../assets/images/odlaw.png';
 import WizzardPic from '../assets/images/wizzard.png';
 import WoofPic from '../assets/images/woof.png';
 import CloseIcon from '../assets/icons/close.svg';
+import checkClickPosition from '../scripts/checkClickPosition';
 
 function TargetingBox({ coordinates, dimensions, closeTargetingBox }) {
   const x = coordinates.x * dimensions.width - 25;
@@ -13,6 +14,12 @@ function TargetingBox({ coordinates, dimensions, closeTargetingBox }) {
     coordinates.x,
     coordinates.y
   );
+
+  async function handleClick(character) {
+    const data = await checkClickPosition(character, coordinates);
+    console.log(data);
+  }
+
   return (
     <>
       <div
@@ -35,7 +42,12 @@ function TargetingBox({ coordinates, dimensions, closeTargetingBox }) {
         >
           <img src={CloseIcon} alt="close" className="w-[35px] " />
         </button>
-        <button className="flex bg-white justify-start items-center px-2 py-1 border rounded-lg hover:scale-105">
+        <button
+          className="flex bg-white justify-start items-center px-2 py-1 border rounded-lg hover:scale-105"
+          onClick={() => {
+            handleClick('waldo');
+          }}
+        >
           <img
             src={WaldoPic}
             alt="waldo"
@@ -43,34 +55,54 @@ function TargetingBox({ coordinates, dimensions, closeTargetingBox }) {
           />
           Waldo
         </button>
-        <button className="flex bg-white justify-start items-center px-2 py-1 rounded-lg hover:scale-105">
+        <button
+          className="flex bg-white justify-start items-center px-2 py-1 rounded-lg hover:scale-105"
+          onClick={() => {
+            handleClick('wenda');
+          }}
+        >
           <img
             src={WendaPic}
-            alt="waldo"
+            alt="wenda"
             className="w-10 rounded-[50%] border border-neutral-400 mr-2"
           />
           Wenda
         </button>
-        <button className="flex bg-white justify-start items-center px-2 py-1 rounded-lg hover:scale-105">
+        <button
+          className="flex bg-white justify-start items-center px-2 py-1 rounded-lg hover:scale-105"
+          onClick={() => {
+            handleClick('odlaw');
+          }}
+        >
           <img
             src={OdlawPic}
-            alt="waldo"
+            alt="odlaw"
             className="w-10 rounded-[50%] border border-neutral-400 mr-2"
           />
           <p>Odlaw</p>
         </button>
-        <button className="flex bg-white justify-start items-center px-2 py-1 rounded-lg hover:scale-105">
+        <button
+          className="flex bg-white justify-start items-center px-2 py-1 rounded-lg hover:scale-105"
+          onClick={() => {
+            handleClick('wizzard');
+          }}
+        >
           <img
             src={WizzardPic}
-            alt="waldo"
+            alt="wizzard"
             className="w-10 rounded-[50%] border border-neutral-400 mr-2"
           />
           Wizzard
         </button>
-        <button className="flex bg-white justify-start items-center px-2 py-1 rounded-lg hover:scale-105">
+        <button
+          className="flex bg-white justify-start items-center px-2 py-1 rounded-lg hover:scale-105"
+          onClick={() => {
+            handleClick('woof');
+          }}
+        >
           <img
             src={WoofPic}
-            alt="waldo"
+            alt="woof"
             className="w-10 rounded-[50%] border border-neutral-400 mr-2"
           />
           Woof
