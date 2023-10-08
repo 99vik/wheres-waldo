@@ -9,7 +9,10 @@ import CloseIcon from '../assets/icons/close.svg';
 function TargetingBox({ coordinates, dimensions, closeTargetingBox }) {
   const x = coordinates.x * dimensions.width - 25;
   const y = coordinates.y * dimensions.height - 25;
-
+  const charactersPopupOffset = getCharactersPopupOffset(
+    coordinates.x,
+    coordinates.y
+  );
   return (
     <>
       <div
@@ -21,7 +24,9 @@ function TargetingBox({ coordinates, dimensions, closeTargetingBox }) {
       <div
         className="absolute bg-neutral-200 p-2 flex flex-col gap-1 rounded-xl"
         style={{
-          transform: `translate(${x + 60}px, ${y - 70}px)`,
+          transform: `translate(${x + charactersPopupOffset.x}px, ${
+            y + charactersPopupOffset.y
+          }px)`,
         }}
       >
         <button
@@ -73,6 +78,36 @@ function TargetingBox({ coordinates, dimensions, closeTargetingBox }) {
       </div>
     </>
   );
+}
+
+function getCharactersPopupOffset(width, height) {
+  let x;
+  let y;
+
+  if (width < 0.8) {
+    x = 60;
+  } else {
+    x = -150;
+  }
+
+  if (height > 0.9) {
+    y = -230;
+  } else if (height > 0.8) {
+    y = -200;
+  } else if (height > 0.7) {
+    y = -150;
+  } else if (height < 0.1) {
+    y = 40;
+    if (width > 0.8) {
+      x = -170;
+    }
+  } else if (height < 0.2) {
+    y = -20;
+  } else {
+    y = -70;
+  }
+
+  return { x, y };
 }
 
 TargetingBox.propTypes = {
