@@ -12,6 +12,10 @@ function Game() {
   const [boxCoordinates, setBoxCoordinates] = useState(null);
   const [pictureDimensions, setPictureDimensions] = useState(null);
 
+  function closeTargetingBox() {
+    setTargetingBox(false);
+  }
+
   function pictureClick(e) {
     const X = e.pageX / e.target.offsetWidth;
     const Y = (e.pageY - e.target.parentNode.offsetTop) / e.target.offsetHeight;
@@ -34,6 +38,7 @@ function Game() {
           <TargetingBox
             coordinates={boxCoordinates}
             dimensions={pictureDimensions}
+            closeTargetingBox={closeTargetingBox}
           />
         )}
         <img
