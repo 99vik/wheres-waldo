@@ -21,7 +21,12 @@ class Api::V1::CheckPositionController < ApplicationController
   private 
 
   def check_character_in_map(map, character, coordinates)
-    MAP_POSITIONS[map][character]
+    coordinates_limits = MAP_POSITIONS[map][character]
+    if (coordinates[:x].to_i.between?(coordinates_limits[:min_x], coordinates_limits[:max_x]) and coordinates[:y].to_i.between?(coordinates_limits[:min_y], coordinates_limits[:max_y]))
+      return true
+    else 
+      return false
+    end
   end
 
   MAP_POSITIONS = {
