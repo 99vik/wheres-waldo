@@ -61,6 +61,38 @@ class Api::V1::CheckPositionController < ApplicationController
         min_y: 38,
         max_y: 42
       }
+    },
+    "ski_slopes" => {
+      "odlaw" => {
+        min_x: 30,
+        max_x: 32,
+        min_y: 62,
+        max_y: 65
+      },
+      "wizzard" => {
+        min_x: 6,
+        max_x: 8,
+        min_y: 73,
+        max_y: 78
+      },
+      "wenda" => {
+        min_x: 48,
+        max_x: 50,
+        min_y: 40,
+        max_y: 44
+      },
+      "waldo" => {
+        min_x: 84,
+        max_x: 87,
+        min_y: 70,
+        max_y: 76
+      },
+      "woof" => {
+        min_x: 29,
+        max_x: 31,
+        min_y: 70,
+        max_y: 73
+      }
     }
   }
 end
