@@ -60,7 +60,7 @@ function Game() {
   return (
     <>
       {finishedGame && <FinishedGamePopup />}
-      <Timer />
+      <Timer finishedGame={finishedGame} />
       <div className="p-1 sticky top-0 z-10">
         <Characters
           guessedCharacters={guessedCharacters.map((character) => {
