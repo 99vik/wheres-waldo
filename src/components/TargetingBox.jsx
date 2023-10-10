@@ -34,13 +34,13 @@ function TargetingBox({
   return (
     <>
       <div
-        className={`h-[50px] w-[50px] border-4 border-black/80 rounded-[50%] absolute`}
+        className={`h-[50px] w-[50px] border-4 border-black/80 rounded-[50%] absolute z-10`}
         style={{
           transform: `translate(${x}px, ${y}px)`,
         }}
       ></div>
       <div
-        className="absolute bg-neutral-200 p-2 flex flex-col gap-1 rounded-xl"
+        className="absolute bg-neutral-200 p-2 flex flex-col gap-1 rounded-xl z-10"
         style={{
           transform: `translate(${x + charactersPopupOffset.x}px, ${
             y + charactersPopupOffset.y
