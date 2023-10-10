@@ -68,13 +68,16 @@ function Game() {
             characterFound={characterFound}
           />
         )}
+        <CharacterTags
+          guessedCharacters={guessedCharacters}
+          dimensions={pictureDimensions}
+        />
         <img
           src={Picture}
           alt="picture"
           className="w-screen border-t border-red-700/30"
           onClick={pictureClick}
         />
-        <CharacterTags guessedCharacters={guessedCharacters} />
       </div>
     </>
   );
