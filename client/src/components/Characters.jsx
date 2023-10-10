@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import WaldoPic from '../assets/images/waldo.png';
 import WendaPic from '../assets/images/wenda.png';
 import OdlawPic from '../assets/images/odlaw.png';
@@ -21,7 +22,11 @@ function Characters({ guessedCharacters }) {
           />
         </div>
         <div className="relative">
-          <div className="bg-green-300 w-full h-full absolute opacity-60 rounded-[50%] hidden"></div>
+          <div
+            className={`bg-green-300 w-full h-full absolute opacity-60 rounded-[50%] ${
+              guessedCharacters.includes('wenda') ? '' : 'hidden'
+            }`}
+          ></div>
           <img
             src={WendaPic}
             alt="wenda picture"
@@ -29,7 +34,11 @@ function Characters({ guessedCharacters }) {
           />
         </div>
         <div className="relative">
-          <div className="bg-green-300 w-full h-full absolute opacity-60 rounded-[50%] hidden"></div>
+          <div
+            className={`bg-green-300 w-full h-full absolute opacity-60 rounded-[50%] ${
+              guessedCharacters.includes('odlaw') ? '' : 'hidden'
+            }`}
+          ></div>
           <img
             src={OdlawPic}
             alt="odlaw picture"
@@ -37,7 +46,11 @@ function Characters({ guessedCharacters }) {
           />
         </div>
         <div className="relative">
-          <div className="bg-green-300 w-full h-full absolute opacity-60 rounded-[50%] hidden"></div>
+          <div
+            className={`bg-green-300 w-full h-full absolute opacity-60 rounded-[50%] ${
+              guessedCharacters.includes('wizzard') ? '' : 'hidden'
+            }`}
+          ></div>
           <img
             src={WizzardPic}
             alt="wizzard picture"
@@ -45,7 +58,11 @@ function Characters({ guessedCharacters }) {
           />
         </div>
         <div className="relative">
-          <div className="bg-green-300 w-full h-full absolute opacity-60 rounded-[50%] hidden"></div>
+          <div
+            className={`bg-green-300 w-full h-full absolute opacity-60 rounded-[50%] ${
+              guessedCharacters.includes('woof') ? '' : 'hidden'
+            }`}
+          ></div>
           <img
             src={WoofPic}
             alt="woof picture"
@@ -56,5 +73,9 @@ function Characters({ guessedCharacters }) {
     </div>
   );
 }
+
+Characters.propTypes = {
+  guessedCharacters: PropTypes.array,
+};
 
 export default Characters;
