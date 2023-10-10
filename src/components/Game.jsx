@@ -21,6 +21,7 @@ function Game() {
   const [guessedCharacters, setGuessedCharacters] = useState([]);
   const [finishedGame, setFinishedGame] = useState(false);
   const [sessionID, setSessionID] = useState(null);
+  const [time, setTime] = useState(null);
 
   useEffect(() => {
     async function getSession() {
@@ -47,8 +48,10 @@ function Game() {
 
   async function finishGame() {
     const session = await getSession(sessionID);
-    const createdAt = Date(session.created_at);
-    console.log(createdAt);
+    const createdAt = new Date(session.created_at);
+    const now = Date.now();
+    const time = Math.ceil((now - createdAt) / 1000);
+    setTime(time);
     setFinishedGame(true);
   }
 
@@ -87,7 +90,7 @@ function Game() {
 
   return (
     <>
-      {finishedGame && <FinishedGamePopup sessionID={sessionID} />}
+      {finishedGame && <FinishedGamePopup time={time} />}
       <Timer finishedGame={finishedGame} />
       <div className="p-1 sticky top-0 z-10">
         <Characters
