@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       get 'session/:id', to: 'session#show'
       post 'session', to: 'session#create'
       delete 'session/:id', to: 'session#destroy'
+
+      post 'player_record', to: 'player_records#create'
     end
   end
 end
