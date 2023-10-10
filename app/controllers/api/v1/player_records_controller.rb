@@ -1,6 +1,11 @@
 class Api::V1::PlayerRecordsController < ApplicationController
+    def index
+      @records = PlayerRecord.all
+
+      render json: @records
+    end
+    
     def create
-      p params
       @record = PlayerRecord.new(player_record_params)
       @record.save
 
