@@ -1,14 +1,18 @@
+import PropTypes from 'prop-types';
+
 import { useEffect, useState } from 'react';
 
-function Timer() {
+function Timer({ finishedGame }) {
   const [time, setTime] = useState(0);
-
   useEffect(() => {
+    if (finishedGame) {
+      return;
+    }
     setTimeout(() => {
       const newTime = time + 1;
       setTime(newTime);
     }, 1000);
-  }, [time]);
+  }, [time, finishedGame]);
 
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
@@ -24,5 +28,9 @@ function Timer() {
     </>
   );
 }
+
+Timer.propTypes = {
+  finishedGame: PropTypes.bool,
+};
 
 export default Timer;
