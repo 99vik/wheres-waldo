@@ -1,4 +1,10 @@
 class Api::V1::SessionController < ApplicationController
+    def show
+        @session = Session.find(params[:id])
+
+        render json: @session
+    end
+
     def create
       @session = Session.new()
       @session.save  

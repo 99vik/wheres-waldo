@@ -1,5 +1,11 @@
 import { API_URL } from './API_URL';
 
+async function getSession(id) {
+  const API_path = `${API_URL}session/${id}`;
+  const response = await fetch(API_path);
+  return response.json();
+}
+
 async function createSession() {
   const API_path = `${API_URL}session`;
   const response = await fetch(API_path, {
@@ -16,4 +22,4 @@ async function destroySession(sessionID) {
   });
 }
 
-export { createSession, destroySession };
+export { createSession, destroySession, getSession };
