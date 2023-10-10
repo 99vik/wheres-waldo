@@ -1,11 +1,24 @@
 import PropTypes from 'prop-types';
 import CloseIcon from '../assets/icons/close.svg';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { createRecord } from '../scripts/LeaderBoardAPI';
 
 function FinishedGamePopup({ time }) {
   const [popup, setPopup] = useState(true);
+  const nameInput = useRef(0);
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const name = nameInput.current.value;
+    const data = {
+      name: name,
+      minutes: minutes,
+      seconds: seconds,
+    };
+    createRecord(data);
+  }
 
   function closePopup() {
     setPopup(false);
@@ -38,7 +51,11 @@ function FinishedGamePopup({ time }) {
               Submit your time to the leaderboard and compare it with others.
             </p>
           </div>
-          <form action="" className="flex flex-col w-[300px]">
+          <form
+            action=""
+            className="flex flex-col w-[300px]"
+            onSubmit={handleSubmit}
+          >
             <div className="flex flex-col mb-8">
               <label
                 htmlFor="name"
@@ -51,6 +68,7 @@ function FinishedGamePopup({ time }) {
                 name="name"
                 id="name"
                 className="border-2 border-neutral-300 p-1 rounded-lg focus:border-red-300 outline-none"
+                ref={nameInput}
               />
             </div>
             <button
