@@ -4,6 +4,7 @@ import Timer from './Timer';
 import Characters from './Characters';
 import { useState } from 'react';
 import TargetingBox from './TargetingBox';
+import CharacterTags from './CharacterTags';
 
 function Game() {
   const { title } = useParams();
@@ -73,16 +74,8 @@ function Game() {
           className="w-screen border-t border-red-700/30"
           onClick={pictureClick}
         />
+        <CharacterTags guessedCharacters={guessedCharacters} />
       </div>
-    </>
-  );
-}
-
-function CharacterTag({ character, coordinates }) {
-  return (
-    <>
-      <h1>{character}</h1>
-      <h1>second h1</h1>
     </>
   );
 }

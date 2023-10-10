@@ -28,6 +28,7 @@ function TargetingBox({
     } else {
       console.log('false');
     }
+    closeTargetingBox();
   }
 
   return (
