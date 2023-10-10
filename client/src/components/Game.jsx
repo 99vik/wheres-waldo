@@ -5,6 +5,7 @@ import Characters from './Characters';
 import { useState } from 'react';
 import TargetingBox from './TargetingBox';
 import CharacterTags from './CharacterTags';
+import FinishedGamePopup from './FinishedGamePopup';
 
 function Game() {
   const { title } = useParams();
@@ -13,9 +14,14 @@ function Game() {
   const [boxCoordinates, setBoxCoordinates] = useState(null);
   const [pictureDimensions, setPictureDimensions] = useState(null);
   const [guessedCharacters, setGuessedCharacters] = useState([]);
+  const [finishedGame, setFinishedGame] = useState(false);
 
   function closeTargetingBox() {
     setTargetingBox(false);
+  }
+
+  function finishGame() {
+    setFinishedGame(true);
   }
 
   function characterFound(character, coordinates) {
@@ -35,6 +41,9 @@ function Game() {
     const newGuessedCharacters = guessedCharacters;
     newGuessedCharacters.push(foundCharacter);
     setGuessedCharacters(newGuessedCharacters);
+    if (newGuessedCharacters.length === 1) {
+      finishGame();
+    }
   }
 
   function pictureClick(e) {
@@ -50,6 +59,7 @@ function Game() {
 
   return (
     <>
+      {finishedGame && <FinishedGamePopup />}
       <Timer />
       <div className="p-1 sticky top-0 z-10">
         <Characters

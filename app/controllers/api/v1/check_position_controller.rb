@@ -63,7 +63,7 @@ class Api::V1::CheckPositionController < ApplicationController
         min_x: 30,
         max_x: 32,
         min_y: 62,
-        max_y: 65
+        max_y: 66
       },
       "wizzard" => {
         min_x: 6,
