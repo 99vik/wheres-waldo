@@ -34,10 +34,12 @@ function CharacterTag({ character, dimensions }) {
 
 CharacterTags.propTypes = {
   guessedCharacters: PropTypes.array,
+  dimensions: PropTypes.object,
 };
 
 CharacterTag.propTypes = {
   character: PropTypes.object,
+  dimensions: PropTypes.object,
 };
 
 export default CharacterTags;

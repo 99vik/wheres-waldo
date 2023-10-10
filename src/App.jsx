@@ -4,7 +4,7 @@ import ApplicationRoutes from './components/ApplicationRoutes';
 
 export default function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
       <Router>
         <Navbar />
         <ApplicationRoutes />
