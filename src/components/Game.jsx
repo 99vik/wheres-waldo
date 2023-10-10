@@ -6,7 +6,11 @@ import { useEffect, useState } from 'react';
 import TargetingBox from './TargetingBox';
 import CharacterTags from './CharacterTags';
 import FinishedGamePopup from './FinishedGamePopup';
-import { createSession, destroySession } from '../scripts/sessionAPI';
+import {
+  createSession,
+  destroySession,
+  getSession,
+} from '../scripts/sessionAPI';
 
 function Game() {
   const { title } = useParams();
@@ -19,14 +23,15 @@ function Game() {
   const [sessionID, setSessionID] = useState(null);
 
   useEffect(() => {
-    let id;
     async function getSession() {
       const session = await createSession();
       setSessionID(session.id);
-      id = session.id;
     }
     getSession();
   }, []);
+
+  // Had to split this useEffect cause of React strict mode in development
+  // Otherwise one session would be left in database cause of async funtion
 
   useEffect(() => {
     return () => {
@@ -40,7 +45,10 @@ function Game() {
     setTargetingBox(false);
   }
 
-  function finishGame() {
+  async function finishGame() {
+    const session = await getSession(sessionID);
+    const createdAt = Date(session.created_at);
+    console.log(createdAt);
     setFinishedGame(true);
   }
 
@@ -61,7 +69,7 @@ function Game() {
     const newGuessedCharacters = guessedCharacters;
     newGuessedCharacters.push(foundCharacter);
     setGuessedCharacters(newGuessedCharacters);
-    if (newGuessedCharacters.length === 2) {
+    if (newGuessedCharacters.length === 1) {
       finishGame();
     }
   }
@@ -79,7 +87,7 @@ function Game() {
 
   return (
     <>
-      {finishedGame && <FinishedGamePopup />}
+      {finishedGame && <FinishedGamePopup sessionID={sessionID} />}
       <Timer finishedGame={finishedGame} />
       <div className="p-1 sticky top-0 z-10">
         <Characters
