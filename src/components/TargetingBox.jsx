@@ -13,6 +13,7 @@ function TargetingBox({
   dimensions,
   closeTargetingBox,
   characterFound,
+  foundCharacters,
 }) {
   const x = coordinates.x * dimensions.width - 25;
   const y = coordinates.y * dimensions.height - 25;
@@ -54,7 +55,9 @@ function TargetingBox({
           <img src={CloseIcon} alt="close" className="w-[35px] " />
         </button>
         <button
-          className="flex bg-white justify-start items-center px-2 py-1 border rounded-lg hover:scale-105"
+          className={`flex bg-white justify-start items-center px-2 py-1 border rounded-lg hover:scale-105 ${
+            foundCharacters.includes('waldo') ? 'hidden' : ''
+          }`}
           onClick={() => {
             handleClick('waldo');
           }}
@@ -67,7 +70,9 @@ function TargetingBox({
           Waldo
         </button>
         <button
-          className="flex bg-white justify-start items-center px-2 py-1 rounded-lg hover:scale-105"
+          className={`flex bg-white justify-start items-center px-2 py-1 border rounded-lg hover:scale-105 ${
+            foundCharacters.includes('wenda') ? 'hidden' : ''
+          }`}
           onClick={() => {
             handleClick('wenda');
           }}
@@ -80,7 +85,9 @@ function TargetingBox({
           Wenda
         </button>
         <button
-          className="flex bg-white justify-start items-center px-2 py-1 rounded-lg hover:scale-105"
+          className={`flex bg-white justify-start items-center px-2 py-1 border rounded-lg hover:scale-105 ${
+            foundCharacters.includes('odlaw') ? 'hidden' : ''
+          }`}
           onClick={() => {
             handleClick('odlaw');
           }}
@@ -93,7 +100,9 @@ function TargetingBox({
           <p>Odlaw</p>
         </button>
         <button
-          className="flex bg-white justify-start items-center px-2 py-1 rounded-lg hover:scale-105"
+          className={`flex bg-white justify-start items-center px-2 py-1 border rounded-lg hover:scale-105 ${
+            foundCharacters.includes('wizzard') ? 'hidden' : ''
+          }`}
           onClick={() => {
             handleClick('wizzard');
           }}
@@ -106,7 +115,9 @@ function TargetingBox({
           Wizzard
         </button>
         <button
-          className="flex bg-white justify-start items-center px-2 py-1 rounded-lg hover:scale-105"
+          className={`flex bg-white justify-start items-center px-2 py-1 border rounded-lg hover:scale-105 ${
+            foundCharacters.includes('woof') ? 'hidden' : ''
+          }`}
           onClick={() => {
             handleClick('woof');
           }}
@@ -159,6 +170,7 @@ TargetingBox.propTypes = {
   dimensions: PropTypes.object,
   closeTargetingBox: PropTypes.func,
   characterFound: PropTypes.func,
+  foundCharacters: PropTypes.array,
 };
 
 export default TargetingBox;

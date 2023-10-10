@@ -41,7 +41,7 @@ function Game() {
     const newGuessedCharacters = guessedCharacters;
     newGuessedCharacters.push(foundCharacter);
     setGuessedCharacters(newGuessedCharacters);
-    if (newGuessedCharacters.length === 1) {
+    if (newGuessedCharacters.length === 2) {
       finishGame();
     }
   }
@@ -76,6 +76,9 @@ function Game() {
             dimensions={pictureDimensions}
             closeTargetingBox={closeTargetingBox}
             characterFound={characterFound}
+            foundCharacters={guessedCharacters.map(
+              (character) => character.name
+            )}
           />
         )}
         <CharacterTags
