@@ -24,7 +24,7 @@ function FinishedGamePopup({ time }) {
             <img
               src={CloseIcon}
               alt="close"
-              className="w-[30px] absolute top-0 right-0 hover:scale-105"
+              className="w-[40px] absolute top-[6px] right-[6px] hover:scale-110"
             />
           </button>
           <div>

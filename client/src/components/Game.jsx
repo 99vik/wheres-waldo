@@ -72,12 +72,16 @@ function Game() {
     const newGuessedCharacters = guessedCharacters;
     newGuessedCharacters.push(foundCharacter);
     setGuessedCharacters(newGuessedCharacters);
-    if (newGuessedCharacters.length === 1) {
+    if (newGuessedCharacters.length === 5) {
       finishGame();
     }
   }
 
   function pictureClick(e) {
+    if (guessedCharacters.length === 5) {
+      return;
+    }
+
     const X = e.pageX / e.target.offsetWidth;
     const Y = (e.pageY - e.target.parentNode.offsetTop) / e.target.offsetHeight;
     setTargetingBox(true);
