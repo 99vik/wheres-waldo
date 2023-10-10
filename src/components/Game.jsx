@@ -19,15 +19,22 @@ function Game() {
   const [sessionID, setSessionID] = useState(null);
 
   useEffect(() => {
+    let id;
     async function getSession() {
       const session = await createSession();
       setSessionID(session.id);
+      id = session.id;
     }
     getSession();
-    return async () => {
-      await destroySession(sessionID);
-    };
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (sessionID) {
+        destroySession(sessionID);
+      }
+    };
+  }, [sessionID]);
 
   function closeTargetingBox() {
     setTargetingBox(false);
