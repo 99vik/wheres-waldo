@@ -2,10 +2,11 @@ import { useParams } from 'react-router-dom';
 import GetPicture from '../scripts/ConditionalPictureExport';
 import Timer from './Timer';
 import Characters from './Characters';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TargetingBox from './TargetingBox';
 import CharacterTags from './CharacterTags';
 import FinishedGamePopup from './FinishedGamePopup';
+import { createSession, destroySession } from '../scripts/sessionAPI';
 
 function Game() {
   const { title } = useParams();
@@ -15,6 +16,18 @@ function Game() {
   const [pictureDimensions, setPictureDimensions] = useState(null);
   const [guessedCharacters, setGuessedCharacters] = useState([]);
   const [finishedGame, setFinishedGame] = useState(false);
+  const [sessionID, setSessionID] = useState(null);
+
+  useEffect(() => {
+    async function getSession() {
+      const session = await createSession();
+      setSessionID(session.id);
+    }
+    getSession();
+    return async () => {
+      await destroySession(sessionID);
+    };
+  }, []);
 
   function closeTargetingBox() {
     setTargetingBox(false);
