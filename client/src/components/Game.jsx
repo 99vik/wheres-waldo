@@ -11,9 +11,29 @@ function Game() {
   const [targetingBox, setTargetingBox] = useState(null);
   const [boxCoordinates, setBoxCoordinates] = useState(null);
   const [pictureDimensions, setPictureDimensions] = useState(null);
+  const [guessedCharacters, setGuessedCharacters] = useState([]);
 
   function closeTargetingBox() {
     setTargetingBox(false);
+  }
+
+  function characterFound(character, coordinates) {
+    if (
+      guessedCharacters
+        .map((guess) => {
+          return guess.name;
+        })
+        .includes(character)
+    ) {
+      return;
+    }
+    const foundCharacter = {
+      name: character,
+      coordinates: coordinates,
+    };
+    const newGuessedCharacters = guessedCharacters;
+    newGuessedCharacters.push(foundCharacter);
+    setGuessedCharacters(newGuessedCharacters);
   }
 
   function pictureClick(e) {
@@ -31,7 +51,11 @@ function Game() {
     <>
       <Timer />
       <div className="p-1 sticky top-0 z-10">
-        <Characters />
+        <Characters
+          guessedCharacters={guessedCharacters.map((character) => {
+            return character.name;
+          })}
+        />
       </div>
       <div className="relative z-0 overflow-hidden">
         {targetingBox && (
@@ -40,6 +64,7 @@ function Game() {
             coordinates={boxCoordinates}
             dimensions={pictureDimensions}
             closeTargetingBox={closeTargetingBox}
+            characterFound={characterFound}
           />
         )}
         <img
@@ -49,6 +74,15 @@ function Game() {
           onClick={pictureClick}
         />
       </div>
+    </>
+  );
+}
+
+function CharacterTag({ character, coordinates }) {
+  return (
+    <>
+      <h1>{character}</h1>
+      <h1>second h1</h1>
     </>
   );
 }

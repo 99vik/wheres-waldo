@@ -9,10 +9,6 @@ class Api::V1::CheckPositionController < ApplicationController
       y: params[:y]
      }
 
-    p image
-    p character
-    p coordinates
-
     response = check_character_in_map(image, character, coordinates)
 
     render json: response

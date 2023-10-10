@@ -4,12 +4,16 @@ import OdlawPic from '../assets/images/odlaw.png';
 import WizzardPic from '../assets/images/wizzard.png';
 import WoofPic from '../assets/images/woof.png';
 
-function Characters() {
+function Characters({ guessedCharacters }) {
   return (
     <div className="flex justify-center">
       <div className="flex items-center justify-center gap-7 bg-white/60 w-fit rounded-3xl">
         <div className="relative">
-          <div className="bg-green-300 w-full h-full absolute opacity-60 rounded-[50%] hidden"></div>
+          <div
+            className={`bg-green-300 w-full h-full absolute opacity-60 rounded-[50%] ${
+              guessedCharacters.includes('waldo') ? '' : 'hidden'
+            }`}
+          ></div>
           <img
             src={WaldoPic}
             alt="waldo picture"
