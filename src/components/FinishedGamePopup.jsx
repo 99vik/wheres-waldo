@@ -2,12 +2,14 @@ import PropTypes from 'prop-types';
 import CloseIcon from '../assets/icons/close.svg';
 import { useRef, useState } from 'react';
 import { createRecord } from '../scripts/LeaderBoardAPI';
+import { useNavigate } from 'react-router-dom';
 
 function FinishedGamePopup({ time }) {
   const [popup, setPopup] = useState(true);
   const nameInput = useRef(0);
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -18,6 +20,7 @@ function FinishedGamePopup({ time }) {
       seconds: seconds,
     };
     createRecord(data);
+    navigate('/leaderboard');
   }
 
   function closePopup() {

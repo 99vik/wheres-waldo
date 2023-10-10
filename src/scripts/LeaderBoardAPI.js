@@ -9,7 +9,11 @@ async function createRecord(formData) {
     },
     body: JSON.stringify(data),
   });
-  console.log(response);
 }
 
-export { createRecord };
+async function getRecords() {
+  const response = await fetch(`${API_URL}/player_record`);
+  return response.json();
+}
+
+export { createRecord, getRecords };
