@@ -9,6 +9,7 @@ async function createRecord(formData) {
     },
     body: JSON.stringify(data),
   });
+  return response;
 }
 
 async function getRecords() {
