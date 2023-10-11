@@ -5,7 +5,9 @@ import OdlawPic from '../assets/images/odlaw.png';
 import WizzardPic from '../assets/images/wizzard.png';
 import WoofPic from '../assets/images/woof.png';
 import CloseIcon from '../assets/icons/close.svg';
+import xIcon from '../assets/icons/close2.svg';
 import checkClickPosition from '../scripts/checkClickPosition';
+import { useState } from 'react';
 
 function TargetingBox({
   title,
@@ -15,6 +17,7 @@ function TargetingBox({
   characterFound,
   foundCharacters,
 }) {
+  const [wrongGuessSign, setWrongGuessSign] = useState(false);
   const x = coordinates.x * dimensions.width - 25;
   const y = coordinates.y * dimensions.height - 25;
   const charactersPopupOffset = getCharactersPopupOffset(
@@ -22,26 +25,45 @@ function TargetingBox({
     coordinates.y
   );
 
+  function showWrongClick() {
+    setWrongGuessSign(true);
+  }
+
   async function handleClick(character) {
     const data = await checkClickPosition(title, character, coordinates);
     if (data) {
       characterFound(character, coordinates);
+      closeTargetingBox();
     } else {
-      console.log('false');
+      showWrongClick();
+      setTimeout(() => {
+        closeTargetingBox();
+      }, 800);
     }
-    closeTargetingBox();
   }
 
   return (
     <>
+      <img
+        src={xIcon}
+        alt="x"
+        className={`w-[80px] absolute ${wrongGuessSign ? '' : 'hidden'}`}
+        style={{
+          transform: `translate(${x - 15}px, ${y - 15}px)`,
+        }}
+      />
       <div
-        className={`h-[50px] w-[50px] border-4 border-black/80 rounded-[50%] absolute z-10`}
+        className={`h-[50px] w-[50px] border-4 border-black/80 rounded-[50%] absolute z-10 ${
+          wrongGuessSign ? 'hidden' : ''
+        }`}
         style={{
           transform: `translate(${x}px, ${y}px)`,
         }}
       ></div>
       <div
-        className="absolute bg-neutral-200 p-2 flex flex-col gap-1 rounded-xl z-10"
+        className={`absolute bg-neutral-200 p-2 flex flex-col gap-1 rounded-xl z-10 ${
+          wrongGuessSign ? 'hidden' : ''
+        }`}
         style={{
           transform: `translate(${x + charactersPopupOffset.x}px, ${
             y + charactersPopupOffset.y

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getRecords } from '../scripts/LeaderBoardAPI';
+import WaldoImg from '../assets/images/waldo-tilted.png';
 
 function Leaderboard() {
   const [data, setData] = useState(null);
@@ -32,17 +33,24 @@ function Leaderboard() {
   }
 
   return (
-    <div className="w-full flex items-center justify-center">
-      <table className="text-gray-500 text-left mt-20 w-[500px] border border-neutral-200">
-        <thead className="text-md text-white uppercase bg-neutral-600">
-          <tr>
-            <th className="px-6 py-3">Username</th>
-            <th className="px-6 py-3">Time</th>
-          </tr>
-        </thead>
-        <tbody>{data && dataRows()}</tbody>
-      </table>
-    </div>
+    <>
+      <div className="w-full flex items-center justify-center">
+        <table className="text-gray-500 text-left mt-20 w-[500px] border border-neutral-200">
+          <thead className="text-md text-white uppercase bg-neutral-600">
+            <tr>
+              <th className="px-6 py-3">Username</th>
+              <th className="px-6 py-3">Time</th>
+            </tr>
+          </thead>
+          <tbody>{data && dataRows()}</tbody>
+        </table>
+      </div>
+      <img
+        src={WaldoImg}
+        alt="waldo"
+        className="w-[180px] absolute right-0 bottom-0"
+      />
+    </>
   );
 }
 
