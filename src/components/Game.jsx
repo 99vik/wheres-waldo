@@ -72,7 +72,7 @@ function Game() {
     const newGuessedCharacters = guessedCharacters;
     newGuessedCharacters.push(foundCharacter);
     setGuessedCharacters(newGuessedCharacters);
-    if (newGuessedCharacters.length === 1) {
+    if (newGuessedCharacters.length === 3) {
       finishGame();
     }
   }
