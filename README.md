@@ -2,7 +2,7 @@
 
 Deployed app: https://tourmaline-twilight-0f12d8.netlify.app/
 
-- You might need to wait for a few seconds to backend to boot-up for everything to work properly (cause its free option)
+- You might need to wait a few seconds for a backend to boot-up so everything works properly (cause its free option)
 
 ## Description
 
