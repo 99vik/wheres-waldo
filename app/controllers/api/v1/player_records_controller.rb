@@ -16,6 +16,5 @@ class Api::V1::PlayerRecordsController < ApplicationController
 
     def player_record_params
         params.require(:player_record).permit(:name, :minutes, :seconds)
-      end
-
+    end
 end
