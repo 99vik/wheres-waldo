@@ -15,11 +15,9 @@ function Home() {
           <ChoosePictureCard img={OlympicStadiumImg} title="Olympic Stadium" />
         </div>
       </div>
-      <img
-        src={WaldoImg}
-        alt="waldo"
-        className="w-[180px] absolute right-0 bottom-0"
-      />
+      <div className="absolute right-0 bottom-0 overflow-hidden">
+        <img src={WaldoImg} alt="waldo" className="corner-waldo w-[180px]" />
+      </div>
     </>
   );
 }

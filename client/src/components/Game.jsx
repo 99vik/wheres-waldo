@@ -81,6 +81,10 @@ function Game() {
     if (guessedCharacters.length === 5) {
       return;
     }
+    if (targetingBox === true) {
+      setTargetingBox(false);
+      return;
+    }
 
     const X = e.pageX / e.target.offsetWidth;
     const Y = (e.pageY - e.target.parentNode.offsetTop) / e.target.offsetHeight;

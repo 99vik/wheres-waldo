@@ -47,13 +47,13 @@ function TargetingBox({
       <img
         src={xIcon}
         alt="x"
-        className={`w-[80px] absolute ${wrongGuessSign ? '' : 'hidden'}`}
+        className={`appear w-[80px] absolute ${wrongGuessSign ? '' : 'hidden'}`}
         style={{
           transform: `translate(${x - 15}px, ${y - 15}px)`,
         }}
       />
       <div
-        className={`h-[50px] w-[50px] border-4 border-black/80 rounded-[50%] absolute z-10 ${
+        className={`appear h-[50px] w-[50px] border-4 border-black/80 rounded-[50%] absolute z-10 ${
           wrongGuessSign ? 'hidden' : ''
         }`}
         style={{
@@ -61,7 +61,7 @@ function TargetingBox({
         }}
       ></div>
       <div
-        className={`absolute bg-neutral-200 p-2 flex flex-col gap-1 rounded-xl z-10 ${
+        className={`appear absolute bg-neutral-200 p-2 flex flex-col gap-1 rounded-xl z-10 ${
           wrongGuessSign ? 'hidden' : ''
         }`}
         style={{

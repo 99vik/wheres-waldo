@@ -24,7 +24,7 @@ function CharacterTag({ character, dimensions }) {
     <img
       src={picture}
       alt="picture"
-      className="w-[50px] rounded-[50%] border-2 border-red-700 absolute z-1"
+      className="appear w-[50px] rounded-[50%] border-2 border-red-700 absolute z-1"
       style={{
         transform: `translate(${x}px, ${y}px)`,
       }}
