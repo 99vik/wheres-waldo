@@ -7,9 +7,12 @@ class Api::V1::PlayerRecordsController < ApplicationController
     
     def create
       @record = PlayerRecord.new(player_record_params)
-      @record.save
 
-      render json: @record
+      if @record.save
+        render json: @record
+      else
+        render json: @record.errors, status: :unprocessable_entity
+      end
     end
 
     private 
