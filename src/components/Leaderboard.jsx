@@ -19,15 +19,27 @@ function Leaderboard() {
     const rows = data.map((record, index) => {
       const minutes = record.minutes;
       const seconds = record.seconds;
+      const date = new Date(record.created_at).toLocaleDateString('en-us', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
 
       return (
-        <tr key={index} className="border-b border-neutral-200 bg-neutral-50">
+        <tr
+          key={index}
+          className="border-b border-neutral-200 bg-neutral-50 even:bg-red-50"
+        >
+          <td className="px-6 text-center py-2 font-medium whitespace-nowrap border-r w-[20px]">
+            <p className="text-lg">{index + 1}.</p>
+          </td>
           <td className="px-6 py-2 font-medium whitespace-nowrap">
             {record.name}
           </td>
-          <td className="px-6 py-2 font-medium whitespace-nowrap">{`${
+          <td className="px-6 py-2 font-medium whitespace-nowrap  w-[120px]">{`${
             minutes < 10 ? `0${minutes}` : minutes
           }:${seconds < 10 ? `0${seconds}` : seconds}`}</td>
+          <td className="px-6 py-2 font-medium whitespace-nowrap">{date}</td>
         </tr>
       );
     });
@@ -41,11 +53,13 @@ function Leaderboard() {
       ) : (
         <>
           <div className="w-full flex items-center justify-center">
-            <table className="text-gray-500 text-left mt-20 w-[500px] border border-neutral-200">
-              <thead className="text-md text-white uppercase bg-neutral-600">
+            <table className="rounded-3xl overflow-hidden text-gray-500 text-left mt-20 w-[800px] border-separate ">
+              <thead className="text-md text-white uppercase bg-red-700">
                 <tr>
+                  <th className="px-6 py-3">Ranking</th>
                   <th className="px-6 py-3">Username</th>
                   <th className="px-6 py-3">Time</th>
+                  <th className="px-6 py-3">Date</th>
                 </tr>
               </thead>
               <tbody>{data && dataRows()}</tbody>
