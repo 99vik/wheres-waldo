@@ -1,5 +1,11 @@
 # Where's Waldo?
 
+Deployed app: https://tourmaline-twilight-0f12d8.netlify.app/
+
+- You might need to wait for a few seconds to backend to boot-up for everything to work properly (cause its free option)
+
+## Description
+
 This application simulates the popular puzzle game "Where's Waldo?", where the user is trying to find specific characters in a picture among dozens of people. Upon completion, a user can save their time with a name into a database.
 
 This application is part of the Odin Project's React course. Exercise link: https://www.theodinproject.com/lessons/react-new-where-s-waldo-a-photo-tagging-app
