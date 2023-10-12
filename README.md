@@ -19,3 +19,9 @@ Checking character's position is also done on backend.
 After finding all characters, a user's time and name can be saved to a leaderboard on the backend.
 
 ## Images
+
+![Alt text](README-images/image.png)
+
+![Alt text](README-images/image1.png)
+
+![Alt text](README-images/image2.png)
