@@ -46,3 +46,13 @@ group :development do
 
 end
 
+
+gem "dockerfile-rails"
+
+gem "pg"
+
+gem "sentry-ruby"
+
+gem "sentry-rails"
+
+gem "redis"
