@@ -37,7 +37,7 @@ function FinishedGamePopup({ time }) {
         }`}
       >
         <div className="z-1 bg-neutral-400/40 h-full w-full absolute top-0 left-0"></div>
-        <div className="w-[50%] h-[45%] p-8 border border-black bg-white absolute z-10 translate-y-20 rounded-2xl flex flex-col justify-between items-center">
+        <div className="w-[50%] h-[40%] p-8 border border-black bg-white absolute z-10 translate-y-20 rounded-2xl flex flex-col justify-between items-center">
           <button onClick={closePopup}>
             <img
               src={CloseIcon}
@@ -46,7 +46,7 @@ function FinishedGamePopup({ time }) {
             />
           </button>
           <div>
-            <h1 className="text-center text-3xl">
+            <h1 className="text-center text-3xl -mt-">
               You found all the characters!
             </h1>
             <p className="text-center text-xl mt-2">
@@ -58,7 +58,7 @@ function FinishedGamePopup({ time }) {
           </div>
           <form
             action=""
-            className="flex flex-col w-[300px]"
+            className="flex flex-col w-[300px] mb-4"
             onSubmit={handleSubmit}
           >
             <div className="flex flex-col mb-8">

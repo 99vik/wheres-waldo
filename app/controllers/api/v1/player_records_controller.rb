@@ -1,6 +1,6 @@
 class Api::V1::PlayerRecordsController < ApplicationController
     def index
-      @records = PlayerRecord.all
+      @records = PlayerRecord.order(minutes: :asc).order(seconds: :asc).first(10)
 
       render json: @records
     end
