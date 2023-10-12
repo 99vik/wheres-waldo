@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 function FinishedGamePopup({ time }) {
   const [loader, setLoader] = useState(false);
+  const [error, setError] = useState(false);
   const [popup, setPopup] = useState(true);
   const nameInput = useRef(0);
   const minutes = Math.floor(time / 60);
@@ -22,7 +23,13 @@ function FinishedGamePopup({ time }) {
       seconds: seconds,
     };
     const response = await createRecord(data);
-    navigate('/leaderboard');
+    if (response.ok) {
+      navigate('/leaderboard');
+    } else {
+      const errorMessage = await response.json();
+      setError(errorMessage.name);
+      setLoader(false);
+    }
   }
 
   function closePopup() {
@@ -52,9 +59,23 @@ function FinishedGamePopup({ time }) {
             <p className="text-center text-xl mt-2">
               It took you {minutes} minutes and {seconds} seconds
             </p>
-            <p className="mt-10 text-md text-neutral-500">
-              Submit your time to the leaderboard and compare it with others.
-            </p>
+            {error ? (
+              <>
+                <ul className="my-4 list-disc text-red-700 text-sm font-semibold">
+                  {error.map((error, index) => {
+                    return (
+                      <li key={index}>
+                        {error.charAt(0).toUpperCase() + error.slice(1)}.
+                      </li>
+                    );
+                  })}
+                </ul>
+              </>
+            ) : (
+              <p className="mt-10 text-md text-neutral-500">
+                Submit your time to the leaderboard and compare it with others.
+              </p>
+            )}
           </div>
           <form
             action=""
