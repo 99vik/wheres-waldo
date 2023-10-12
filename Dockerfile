@@ -4,21 +4,6 @@
 ARG RUBY_VERSION=3.2.2
 ARG NODE_VERSION=18.16.0
 
-FROM node:$NODE_VERSION-slim as client
-
-WORKDIR /rails/client
-
-ENV NODE_ENV=production
-
-# Install node modules
-COPY --link client/package.json client/package-lock.json ./
-RUN npm install
-
-# build client application
-COPY --link client .
-RUN npm run build
-
-
 FROM ruby:$RUBY_VERSION-slim as base
 
 # Rails app lives here
